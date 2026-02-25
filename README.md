@@ -4,12 +4,26 @@
 
 This project implements a **Level 2 solar array degradation model** for small satellites in **Low Earth Orbit (LEO)**. The simulation estimates **relative end-of-life (EOL) power** over a mission duration of 10 years for different conditions:
 
-- **Altitude**: 400 km, 700 km, 926 km  
+- **Altitude**: 400 km, 700 km 
 - **Solar cell technology**: Silicon (Si BSF/R) and Gallium Arsenide (GaAs/Ge)  
-- **Coverglass thickness**: 3 mil, 6 mil, 9 mil  
+- **Coverglass thickness**: 3 mil, 6 mil  
 
 The code generates comparison plots for each factor, keeping other parameters constant, and saves them into a `results/` folder.
 
+## Before running
+
+### Create a virtual environment
+python 3.11 was used in this simulation.
+```bash
+conda create -p myenv python=3.11
+```
+
+### install necessary libraries
+can be found in the ```bash requirements.txt ``` file.
+
+```bash
+conda create -p myenv python=3.11
+```
 ---
 
 ## Assumptions
