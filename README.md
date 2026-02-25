@@ -27,9 +27,9 @@ The code generates comparison plots for each factor, keeping other parameters co
 2. **Altitude Factor**:  
    Radiation damage increases linearly above a baseline altitude of 400 km:
 
-   \[
+   $$
    F_{alt}(h) = \max(0, (h - 400)/500)
-   \]
+   $$
 
 3. **Inclination Factor**:  
    Exposure depends on orbit inclination (sin² dependence to model polar/SAA exposure):
