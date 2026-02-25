@@ -32,51 +32,36 @@ conda create -p myenv python=3.11
 python main.py
 ```
 
-## Assumptions
-
 1. **Degradation Components**:  
-   The total annual degradation rate is composed of:  
+   The total annual degradation rate is:
 
-   $$
-   d_{total} = d_{const} + d_{rad}
-   $$
+   d_total = d_const + d_rad
 
-   - `d_const` (1%/year) accounts for **UV exposure and atomic oxygen** damage.  
-   - `d_rad` accounts for **radiation-induced degradation**, modeled as a function of altitude, inclination, coverglass thickness, and cell technology.
+   - d_const (1%/year) accounts for **UV exposure and atomic oxygen** damage.  
+   - d_rad accounts for **radiation-induced degradation**, modeled as a function of altitude, inclination, coverglass thickness, and cell technology.
 
 2. **Altitude Factor**:  
-   Radiation damage increases linearly above a baseline altitude of 400 km:
+   Radiation damage increases linearly above 400 km:
+
+   F_alt(h) = max(0, (h - 400)/500)
+
+3. **Inclination Factor**:  
+
+   F_inc(i) = 1 + 0.3 × sin²(i)
+
+4. **Coverglass Shielding**:  
+
+   S_glass(g) = exp(-α × g), α = 0.15
+
+5. **Technology Sensitivity**:  
+   - GaAs/Ge: k_tech = 0.008  
+   - Si BSF/R: k_tech = 0.015
+
+6. **Multiplicative Degradation**:
+
+   P(t) = P₀ × (1 - d_total)^t
    
-   $$
-   F_{alt}(h) = \max(0, (h - 400)/500)
-   $$
-
-3. **Inclination Factor (Taken from the shared paper)**:  
-   Exposure depends on orbit inclination (sin² dependence to model polar/SAA exposure):
-   
-   $$
-   F_{inc}(i) = 1 + 0.3 \cdot \sin^2(i)
-   $$
-
-4. **Coverglass Shielding (Taken from the shared paper)**:  
-   Radiation attenuation through glass follows an **exponential decay**:
-
-   $$
-   S_{glass}(g) = \exp(-\alpha g), \quad \alpha = 0.15
-   $$
-
-5. **Technology Sensitivity (Taken from the shared paper)**:  
-   - GaAs/Ge: `k_tech = 0.008` (radiation hard)  
-   - Si BSF/R: `k_tech = 0.015` (more radiation sensitive)
-
-6. **Multiplicative Degradation**:  
-   Annual degradation is multiplicative over the mission duration:
-
-   $$
-   P(t) = P_0 \cdot (1 - d_{total})^t
-   $$
-
-7. **Other Simplifications**:  
+8. **Other Simplifications**:  
    - Thermal cycling, eclipse effects, and micrometeoroid impacts are **not included**.  
    - The model is **parameterized** for easy extension to more complex physics-based degradation.
 
