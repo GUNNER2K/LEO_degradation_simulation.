@@ -23,7 +23,7 @@ conda create -p myenv python=3.11
 can be found in the ```requirements.txt ``` file.
 
 ```bash
-conda create -p myenv python=3.11
+pip install -r requirements.txt
 ```
 ---
 ## How to Run
@@ -31,6 +31,7 @@ conda create -p myenv python=3.11
 ```bash
 python main.py
 ```
+## Assumptions
 
 1. **Degradation Components**:  
    The total annual degradation rate is:
