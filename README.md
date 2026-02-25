@@ -26,26 +26,26 @@ The code generates comparison plots for each factor, keeping other parameters co
 
 2. **Altitude Factor**:  
    Radiation damage increases linearly above a baseline altitude of 400 km:
-
+   
    $$
    F_{alt}(h) = \max(0, (h - 400)/500)
    $$
 
-3. **Inclination Factor**:  
+3. **Inclination Factor (Taken from the shared paper)**:  
    Exposure depends on orbit inclination (sin² dependence to model polar/SAA exposure):
-
+   
    \[
    F_{inc}(i) = 1 + 0.3 \cdot \sin^2(i)
    \]
 
-4. **Coverglass Shielding**:  
+4. **Coverglass Shielding (Taken from the shared paper)**:  
    Radiation attenuation through glass follows an **exponential decay**:
 
    \[
    S_{glass}(g) = \exp(-\alpha g), \quad \alpha = 0.15
    \]
 
-5. **Technology Sensitivity**:  
+5. **Technology Sensitivity (Taken from the shared paper)**:  
    - GaAs/Ge: `k_tech = 0.008` (radiation hard)  
    - Si BSF/R: `k_tech = 0.015` (more radiation sensitive)
 
@@ -64,7 +64,7 @@ The code generates comparison plots for each factor, keeping other parameters co
 
 ## Simulation Structure
 
-- **`extended_simulation.py`** – main script performing the simulations and generating plots  
+- **`main.py`** – main script performing the simulations and generating plots  
 - **`results/`** – folder where all plots are automatically saved  
   - `comparison_altitudes.png`  
   - `comparison_technologies.png`  
@@ -91,4 +91,4 @@ The code generates comparison plots for each factor, keeping other parameters co
 ## How to Run
 
 ```bash
-python extended_simulation.py
+python main.py
