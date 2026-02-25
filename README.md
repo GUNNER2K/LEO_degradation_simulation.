@@ -19,7 +19,7 @@ conda create -p myenv python=3.11
 ```
 
 ### install necessary libraries
-can be found in the ```bash requirements.txt ``` file.
+can be found in the ```requirements.txt ``` file.
 
 ```bash
 conda create -p myenv python=3.11
